@@ -125,7 +125,7 @@ class Connection(Database):
     """
         These objects are small stateless factories for cursors, which do all the real work.
     """
-    def __init__(self, db_name, db_url='http://localhost:8123/', username=None, password=None, readonly=False, ssl="False"):
+    def __init__(self, db_name, db_url='http://localhost:8123/', username=None, password=None, readonly=False, ssl="False", timeout=600):
         if ssl.upper() == "TRUE":
             db_url = db_url.replace("http", "https")
         elif ssl.upper() == "FALSE":
@@ -138,6 +138,7 @@ class Connection(Database):
         self.username = username
         self.password = password
         self.readonly = readonly
+        self.timeout = timeout
 
     def close(self):
         pass
